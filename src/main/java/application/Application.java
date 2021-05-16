@@ -11,13 +11,16 @@ public class Application {
     public static void main(String[] args) {
         ExecutorService executorService;
         final int[] arrayE = getExampleArray1();
+        //printArray(arrayE);
         final long[] time = new long[4];
         time[0] = runSingle(arrayE);
+        //printArray(arrayE);
         for (int i = 2; i < 5; i++) {
             executorService = Executors.newFixedThreadPool(i);
             MultiQuickSort quickSort = new MultiQuickSort(executorService);
             long startTime = System.nanoTime();
             quickSort.sort(arrayE, 10);
+            //printArray(arrayE);
             executorService.shutdown();
             long endTime = System.nanoTime();
             time[i - 1] = endTime - startTime;
@@ -50,5 +53,12 @@ public class Application {
             double div = ((double) time[i] / (double)time[0]);
             System.out.println((i + 1) + " | " + div);
         }
+    }
+
+    private static void printArray(int[] array) {
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
     }
 }
