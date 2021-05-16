@@ -1,16 +1,16 @@
-package algorithm;
+package algorithm.single;
 
-public class QuickSort {
-    public static int[] sort(int[] array) {
-
+public class SingleQuickSort {
+    public static void sort(int[] array) {
+        sort(array, 0, array.length - 1);
     }
 
-    private static int[] sort(int[] array, int l, int r) {
+    private static void sort(int[] array, int l, int r) {
         if (array.length == 0) {
-            return array;
+            return;
         }
         if (l >= r) {
-            return array;
+            return;
         }
 
         int supportElement = getSupportElement(array, l, r);
@@ -32,11 +32,15 @@ public class QuickSort {
             }
         }
         if (l < j) {
-
+            sort(array, l, j);
+        }
+        if (r > i) {
+            sort(array, i, r);
         }
     }
 
-    public static int getSupportElement(int[] array, int l, int r) {
-
+    private static int getSupportElement(int[] array, int l, int r) {
+        int supportIndex = l + (r - l) / 2;
+        return array[supportIndex];
     }
 }
