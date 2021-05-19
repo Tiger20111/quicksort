@@ -29,7 +29,7 @@ public class Application {
             array = arrayE.clone();
             //printArray(array);
             long startTime = System.nanoTime();
-            quickSort.sort(array, 40, tasks);
+            quickSort.sort(array, 100, tasks);
             while (tasks.get() > 0);
             executorService.shutdown();
            // executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
